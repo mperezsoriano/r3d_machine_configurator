@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- =========================================================
+         MÁQUINAS
+         ========================================================= -->
+
+    <record id="view_r3d_machine_list" model="ir.ui.view">
+        <field name="name">r3d.machine.list</field>
+        <field name="model">r3d.machine</field>
+        <field name="arch" type="xml">
+            <list string="Máquinas">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="base_price"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_r3d_machine_form" model="ir.ui.view">
+        <field name="name">r3d.machine.form</field>
+        <field name="model">r3d.machine</field>
+        <field name="arch" type="xml">
+            <form string="Máquina">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="IDENTITY"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="base_price"/>
+                        </group>
+
+                        <group>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="description"
+                               placeholder="Descripción comercial de la máquina..."/>
+                    </group>
+
+                    <notebook>
+
+                        <page string="Configuración">
+
+                            <field name="configuration_ids">
+
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="option_id"/>
+                                    <field name="price"/>
+                                    <field name="included"/>
+                                    <field name="available"/>
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- =========================================================
+         GRUPOS DE OPCIONES
+         ========================================================= -->
+
+    <record id="view_r3d_machine_option_group_list" model="ir.ui.view">
+        <field name="name">r3d.machine.option.group.list</field>
+        <field name="model">r3d.machine.option.group</field>
+        <field name="arch" type="xml">
+            <list string="Grupos de opciones">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="selection_type"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_r3d_machine_option_group_form" model="ir.ui.view">
+        <field name="name">r3d.machine.option.group.form</field>
+        <field name="model">r3d.machine.option.group</field>
+        <field name="arch" type="xml">
+            <form string="Grupo de opciones">
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="selection_type"/>
+                        <field name="sequence"/>
+                    </group>
+
+                    <notebook>
+
+                        <page string="Opciones">
+
+                            <field name="option_ids">
+
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="active"/>
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <!-- =========================================================
+         ACCIONES
+         ========================================================= -->
+
+    <record id="action_r3d_machine" model="ir.actions.act_window">
+        <field name="name">Máquinas</field>
+        <field name="res_model">r3d.machine</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_r3d_machine_option_group"
+            model="ir.actions.act_window">
+        <field name="name">Grupos de opciones</field>
+        <field name="res_model">r3d.machine.option.group</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <!-- =========================================================
+         MENÚ
+         ========================================================= -->
+
+    <menuitem id="menu_r3d_configurator_root"
+              name="Configurador R3D"
+              action="action_r3d_machine"
+              sequence="80"/>
+
+    <menuitem id="menu_r3d_machine"
+              name="Máquinas"
+              parent="menu_r3d_configurator_root"
+              action="action_r3d_machine"
+              sequence="10"/>
+
+    <menuitem id="menu_r3d_machine_option_group"
+              name="Grupos de opciones"
+              parent="menu_r3d_configurator_root"
+              action="action_r3d_machine_option_group"
+              sequence="20"/>
+
+</odoo>

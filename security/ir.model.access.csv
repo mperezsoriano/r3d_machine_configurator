@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_r3d_machine,r3d.machine,model_r3d_machine,base.group_user,1,1,1,1
+access_r3d_machine_option_group,r3d.machine.option.group,model_r3d_machine_option_group,base.group_user,1,1,1,1
+access_r3d_machine_option,r3d.machine.option,model_r3d_machine_option,base.group_user,1,1,1,1
+access_r3d_machine_configuration,r3d.machine.configuration,model_r3d_machine_configuration,base.group_user,1,1,1,1

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="configurator_page" name="Configurador R3DIMENSION">
+
+        <t t-call="website.layout">
+
+            <div id="wrap">
+
+                <section class="r3d-configurator">
+
+                    <div class="r3d-configurator-container">
+
+                        <!-- =================================================
+                             CABECERA
+                             ================================================= -->
+
+                        <div class="r3d-configurator-header">
+
+                            <h1>Configura tu impresora 3D industrial</h1>
+
+                            <p>
+                                Configura una máquina adaptada a las necesidades
+                                reales de tu producción.
+                            </p>
+
+                            <!-- SELECTOR DE MÁQUINAS -->
+
+                            <div class="r3d-machine-selector">
+
+                                <t t-foreach="machines" t-as="machine">
+
+                                    <button
+                                        type="button"
+                                        t-att-class="'r3d-machine-button active' if machine == machines[:1] else 'r3d-machine-button'"
+                                        t-att-data-machine-id="machine.id"
+                                        t-att-data-machine-name="machine.name"
+                                        t-att-data-machine-price="machine.base_price">
+
+                                        <t t-esc="machine.name"/>
+
+                                    </button>
+
+                                </t>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             CONFIGURADOR
+                             ================================================= -->
+
+                        <div class="r3d-configurator-main">
+
+
+                            <!-- =============================================
+                                 VISUALIZACIÓN DE LA MÁQUINA
+                                 ============================================= -->
+
+                            <div class="r3d-machine-view">
+
+                                <div class="r3d-machine-visual">
+
+                                    <t t-if="machines">
+
+                                        <img
+                                            class="r3d-machine-image"
+                                            src="/r3d_machine_configurator/static/src/img/identity.png"
+                                            alt="R3DIMENSION IDENTITY"/>
+
+                                    </t>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- =============================================
+                                 PANEL DERECHO
+                                 ============================================= -->
+
+                            <aside class="r3d-summary">
+
+                                <div class="r3d-summary-label">
+                                    TU CONFIGURACIÓN
+                                </div>
+
+
+                                <t t-if="machines">
+
+                                    <!-- NOMBRE -->
+
+                                    <h2>
+                                        <t t-esc="machines[0].name"/>
+                                    </h2>
+
+
+                                    <!-- =====================================
+                                         EQUIPAMIENTO
+                                         ===================================== -->
+
+                                    <div class="r3d-machine-configurations">
+
+                                        <t t-foreach="machines" t-as="machine">
+
+                                            <div
+                                                t-att-class="'r3d-machine-options active' if machine == machines[:1] else 'r3d-machine-options'"
+                                                t-att-data-machine-id="machine.id">
+
+                                                <h3>
+                                                    Equipamiento
+                                                </h3>
+
+
+                                                <t t-foreach="machine.configuration_ids"
+                                                   t-as="config">
+
+                                                    <t t-if="config.available">
+
+
+                                                        <!-- INCLUIDO -->
+
+                                                        <div
+                                                            t-if="config.included"
+                                                            class="r3d-option r3d-option-included">
+
+                                                            <span>
+                                                                <t t-esc="config.option_id.name"/>
+                                                            </span>
+
+                                                            <strong>
+                                                                Incluido
+                                                            </strong>
+
+                                                        </div>
+
+
+                                                        <!-- EXTRA -->
+
+                                                        <label
+                                                            t-else=""
+                                                            class="r3d-option">
+
+                                                            <input
+                                                                type="checkbox"
+                                                                class="r3d-extra-option"
+                                                                t-att-data-price="config.price"
+                                                                t-att-data-option-name="config.option_id.name"
+                                                                t-att-data-configuration-id="config.id"/>
+
+                                                            <span>
+                                                                <t t-esc="config.option_id.name"/>
+                                                            </span>
+
+
+                                                            <t t-if="config.price">
+
+                                                                <strong>
+                                                                    +
+                                                                    <t t-esc="'{:,.2f} €'.format(config.price)"/>
+                                                                </strong>
+
+                                                            </t>
+
+                                                        </label>
+
+                                                    </t>
+
+                                                </t>
+
+                                            </div>
+
+                                        </t>
+
+                                    </div>
+
+
+                                    <!-- =====================================
+                                         PRECIO
+                                         ===================================== -->
+
+                                    <div class="r3d-total">
+
+                                        <span>
+                                            PRECIO
+                                        </span>
+
+                                        <strong>
+                                            <t t-esc="'{:,.2f} €'.format(machines[0].base_price)"/>
+                                        </strong>
+
+                                    </div>
+
+                                </t>
+
+
+                                <!-- =========================================
+                                     BOTÓN SOLICITAR OFERTA
+                                     ========================================= -->
+
+                                <button
+                                    type="button"
+                                    class="r3d-quote-button">
+                                    SOLICITAR OFERTA
+                                </button>
+
+
+                                <!-- =========================================
+                                     FORMULARIO DE SOLICITUD
+                                     ========================================= -->
+
+                                <div
+                                    class="r3d-quote-form"
+                                    style="display: none;">
+
+                                    <div class="r3d-quote-form-header">
+
+                                        <h3>
+                                            Solicitar oferta
+                                        </h3>
+
+                                        <button
+                                            type="button"
+                                            class="r3d-quote-close">
+                                            ×
+                                        </button>
+
+                                    </div>
+
+
+                                    <p class="r3d-quote-intro">
+                                        Déjanos tus datos y te enviaremos una
+                                        propuesta adaptada a la configuración
+                                        seleccionada.
+                                    </p>
+
+
+                                    <!-- NOMBRE -->
+
+                                    <div class="r3d-form-field">
+
+                                        <label>
+                                            Nombre *
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="customer_name"
+                                            required="required"/>
+
+                                    </div>
+
+
+                                    <!-- EMPRESA -->
+
+                                    <div class="r3d-form-field">
+
+                                        <label>
+                                            Empresa
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="company_name"/>
+
+                                    </div>
+
+
+                                    <!-- EMAIL -->
+
+                                    <div class="r3d-form-field">
+
+                                        <label>
+                                            Email *
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            required="required"/>
+
+                                    </div>
+
+
+                                    <!-- TELÉFONO -->
+
+                                    <div class="r3d-form-field">
+
+                                        <label>
+                                            Teléfono
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            name="phone"/>
+
+                                    </div>
+
+
+                                    <!-- COMENTARIOS -->
+
+                                    <div class="r3d-form-field">
+
+                                        <label>
+                                            Comentarios
+                                        </label>
+
+                                        <textarea
+                                            name="comments"
+                                            rows="4"></textarea>
+
+                                    </div>
+
+
+                                    <!-- ENVIAR -->
+
+                                    <button
+                                        type="button"
+                                        class="r3d-quote-submit">
+                                        ENVIAR SOLICITUD
+                                    </button>
+
+                                </div>
+
+                            </aside>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>
