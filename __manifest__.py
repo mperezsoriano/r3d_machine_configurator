@@ -17,18 +17,27 @@
         "base",
         "website",
         "crm",
+        "sale_management",
     ],
 
     "data": [
         "security/ir.model.access.csv",
         "views/machine_views.xml",
+        "views/website_header.xml",
         "views/configurator_templates.xml",
+        "views/homepage.xml",
+        "views/footer_templates.xml",
     ],
 
     "assets": {
         "web.assets_frontend": [
+            "r3d_machine_configurator/static/src/css/general.css",
+            "r3d_machine_configurator/static/src/css/header.css",
+            "r3d_machine_configurator/static/src/css/footer.css",
             "r3d_machine_configurator/static/src/css/configurator.css",
+            "r3d_machine_configurator/static/src/css/homepage.css",
             "r3d_machine_configurator/static/src/js/configurator.js",
+            "r3d_machine_configurator/static/src/css/footer.css",
         ],
     },
 

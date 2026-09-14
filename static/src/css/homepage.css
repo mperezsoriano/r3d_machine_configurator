@@ -1,0 +1,319 @@
+/* =========================================================
+   R3DIMENSION - HOME
+   ========================================================= */
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.r3d-home-hero {
+    width: 100%;
+    min-height: 680px;
+
+    display: grid;
+    grid-template-columns: 46% 54%;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   HERO - TEXTO
+   ========================================================= */
+
+.r3d-home-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding:
+        80px
+        70px
+        80px
+        max(70px, calc((100vw - 1500px) / 2));
+
+    background: #ffffff;
+}
+
+
+.r3d-home-hero-content h1 {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: clamp(52px, 5vw, 82px);
+    font-weight: 800;
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+}
+
+
+.r3d-home-hero-content h1 span {
+    color: var(--r3d-red);
+}
+
+
+/* LÍNEA ROJA */
+
+.r3d-home-red-line {
+    width: 70px;
+    height: 4px;
+
+    margin: 30px 0 25px;
+
+    background: var(--r3d-red);
+}
+
+
+/* TEXTO PRINCIPAL */
+
+.r3d-home-hero-content > p {
+    max-width: 580px;
+
+    margin: 0 0 8px;
+
+    color: #363636;
+
+    font-size: 21px;
+    font-weight: 400;
+
+    line-height: 1.45;
+}
+
+
+/* TEXTO DESTACADO */
+
+.r3d-home-hero-content > strong {
+    max-width: 580px;
+
+    color: #111111;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.r3d-home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 38px;
+}
+
+
+.r3d-home-button {
+    min-height: 54px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+
+    padding: 0 25px;
+
+    border: 1px solid #171717;
+
+    color: #171717;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.r3d-home-button:hover {
+    text-decoration: none;
+}
+
+
+.r3d-home-button span {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+/* BOTÓN ROJO */
+
+.r3d-home-button-primary {
+    border-color: var(--r3d-red);
+
+    background: var(--r3d-red);
+
+    color: #ffffff;
+}
+
+
+.r3d-home-button-primary:hover {
+    border-color: var(--r3d-red-hover);
+
+    background: var(--r3d-red-hover);
+
+    color: #ffffff;
+}
+
+
+/* BOTÓN BLANCO */
+
+.r3d-home-button-secondary {
+    background: transparent;
+
+    color: #171717;
+}
+
+
+.r3d-home-button-secondary:hover {
+    background: #171717;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO - IMAGEN
+   ========================================================= */
+
+.r3d-home-hero-image {
+    position: relative;
+
+    min-height: 680px;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.06),
+            rgba(0, 0, 0, 0)
+        ),
+        url("/r3d_machine_configurator/static/src/img/home_impresion.png");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .r3d-home-hero {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .r3d-home-hero-content {
+        padding:
+            65px
+            40px;
+    }
+
+
+    .r3d-home-hero-content h1 {
+        font-size: 52px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .r3d-home-hero-content > p,
+    .r3d-home-hero-content > strong {
+        font-size: 18px;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .r3d-home-hero {
+        display: flex;
+        flex-direction: column;
+
+        min-height: auto;
+    }
+
+
+    .r3d-home-hero-content {
+        order: 1;
+
+        padding:
+            60px
+            25px;
+    }
+
+
+    .r3d-home-hero-image {
+        order: 2;
+
+        min-height: 480px;
+    }
+
+
+    .r3d-home-hero-content h1 {
+        font-size: clamp(44px, 11vw, 62px);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .r3d-home-hero-content {
+        padding:
+            45px
+            20px;
+    }
+
+
+    .r3d-home-hero-content h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .r3d-home-hero-content > p,
+    .r3d-home-hero-content > strong {
+        font-size: 17px;
+    }
+
+
+    .r3d-home-hero-actions {
+        width: 100%;
+    }
+
+
+    .r3d-home-button {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .r3d-home-hero-image {
+        min-height: 360px;
+    }
+
+}

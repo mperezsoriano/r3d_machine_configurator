@@ -1,0 +1,23 @@
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --r3d-red: #b51f32;
+    --r3d-red-hover: #cf263b;
+    --r3d-red-soft: rgba(181, 31, 50, 0.10);
+    --r3d-red-border: rgba(207, 38, 59, 0.55);
+
+    --r3d-black: #080a0c;
+    --r3d-dark: #101316;
+    --r3d-panel: #161a1e;
+    --r3d-panel-light: #1c2126;
+
+    --r3d-border: rgba(255, 255, 255, 0.10);
+    --r3d-border-light: rgba(255, 255, 255, 0.18);
+
+    --r3d-text: #ffffff;
+    --r3d-muted: #9ca3aa;
+
+    --r3d-radius: 8px;
+}

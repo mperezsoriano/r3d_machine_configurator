@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template
+        id="r3d_custom_footer"
+        inherit_id="website.layout"
+        name="R3DIMENSION Footer">
+
+        <xpath expr="//footer" position="replace">
+
+            <footer class="r3d-footer">
+
+                <div class="r3d-footer-inner">
+
+
+                    <!-- =========================================
+                         REDES SOCIALES
+                         ========================================= -->
+
+                    <div class="r3d-footer-social">
+
+                        <a
+                            href="https://www.linkedin.com/company/r3dimension/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="r3d-footer-social-link"
+                            aria-label="LinkedIn">
+
+                            <i class="fa fa-linkedin"></i>
+
+                        </a>
+
+                        <a
+                            href="https://www.instagram.com/r3dimension/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="r3d-footer-social-link"
+                            aria-label="Instagram">
+
+                            <i class="fa fa-instagram"></i>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- =========================================
+                         ENLACES
+                         ========================================= -->
+
+                    <nav
+                        class="r3d-footer-links"
+                        aria-label="Enlaces legales">
+
+                        <a href="#">
+                            FEDER
+                        </a>
+
+                        <a href="#">
+                            Aviso legal
+                        </a>
+
+                        <a href="#">
+                            Política de privacidad
+                        </a>
+
+                        <a href="#">
+                            Política de cookies
+                        </a>
+
+                        <a href="#">
+                            Gestión de cookies
+                        </a>
+
+                        <a href="#">
+                            Declaración de accesibilidad
+                        </a>
+
+                    </nav>
+
+
+                    <!-- =========================================
+                         LOGOS INSTITUCIONALES
+                         ========================================= -->
+
+                    <div class="r3d-footer-funding">
+
+                        <img
+                            class="r3d-footer-funding-logo r3d-footer-prtr-logo"
+                            src="/r3d_machine_configurator/static/src/img/Logo-PRTR.webp"
+                            alt="Plan de Recuperación, Transformación y Resiliencia" />
+
+                        <img
+                            class="r3d-footer-funding-logo r3d-footer-eu-logo"
+                            src="/r3d_machine_configurator/static/src/img/Logo-UE.webp"
+                            alt="Financiado por la Unión Europea - NextGenerationEU" />
+
+                    </div>
+
+
+                </div>
+
+            </footer>
+
+        </xpath>
+
+    </template>
+
+</odoo>

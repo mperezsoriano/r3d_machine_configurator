@@ -24,6 +24,10 @@ const configurationBlocks = document.querySelectorAll(
     ".r3d-machine-options"
 );
 
+const summaryConfigurationBlocks = document.querySelectorAll(
+    ".r3d-summary-machine-options"
+);
+
 const quoteButton = document.querySelector(
     ".r3d-quote-button"
 );
@@ -38,6 +42,23 @@ const quoteClose = document.querySelector(
 
 const quoteSubmit = document.querySelector(
     ".r3d-quote-submit"
+);
+
+
+// =========================================================
+// ELEMENTOS VISUALES DE LA MÁQUINA
+// =========================================================
+
+const visualMachineName = document.querySelector(
+    ".r3d-visual-machine-name"
+);
+
+const visualMachineDescription = document.querySelector(
+    ".r3d-visual-machine-description"
+);
+
+const featureThird = document.querySelector(
+    ".r3d-feature-third"
 );
 
 
@@ -69,19 +90,28 @@ function calculateTotal() {
     }
 
 
-    // Precio base de la máquina
+    // -----------------------------------------------------
+    // PRECIO BASE DE LA MÁQUINA
+    // -----------------------------------------------------
+
     let total = Number(
         activeButton.dataset.machinePrice
     ) || 0;
 
 
-    // Configuración activa
+    // -----------------------------------------------------
+    // CONFIGURACIÓN ACTIVA
+    // -----------------------------------------------------
+
     const activeConfiguration = document.querySelector(
         ".r3d-machine-options.active"
     );
 
 
-    // Sumar extras seleccionados
+    // -----------------------------------------------------
+    // SUMAR EXTRAS SELECCIONADOS
+    // -----------------------------------------------------
+
     if (activeConfiguration) {
 
         const selectedExtras =
@@ -99,7 +129,10 @@ function calculateTotal() {
     }
 
 
-    // Mostrar total
+    // -----------------------------------------------------
+    // MOSTRAR TOTAL
+    // -----------------------------------------------------
+
     if (priceElement) {
 
         priceElement.textContent =
@@ -115,12 +148,178 @@ function calculateTotal() {
 function closeQuoteForm() {
 
     if (quoteForm) {
-        quoteForm.style.display = "none";
+
+        quoteForm.style.display =
+            "none";
     }
 
     if (quoteButton) {
-        quoteButton.style.display = "";
+
+        quoteButton.style.display =
+            "";
     }
+}
+
+
+// =========================================================
+// ACTUALIZAR PARTE VISUAL DE LA MÁQUINA
+// =========================================================
+
+function updateMachineVisual(name) {
+
+    if (name === "IDENTITY HT") {
+
+
+        // -------------------------------------------------
+        // IMAGEN
+        // -------------------------------------------------
+
+        if (machineImage) {
+
+            machineImage.src =
+                "/r3d_machine_configurator/static/src/img/identity_ht.png";
+
+            machineImage.alt =
+                "R3DIMENSION IDENTITY HT";
+        }
+
+
+        // -------------------------------------------------
+        // NOMBRE VISUAL
+        // -------------------------------------------------
+
+        if (visualMachineName) {
+
+            visualMachineName.textContent =
+                "IDENTITY HT";
+        }
+
+
+        // -------------------------------------------------
+        // DESCRIPCIÓN
+        // -------------------------------------------------
+
+        if (visualMachineDescription) {
+
+            visualMachineDescription.textContent =
+                "Fabricación aditiva industrial de gran formato con control térmico avanzado para materiales técnicos.";
+        }
+
+
+        // -------------------------------------------------
+        // TERCERA CARACTERÍSTICA
+        // -------------------------------------------------
+
+        if (featureThird) {
+
+            featureThird.textContent =
+                "ALTA TEMPERATURA";
+        }
+
+    } else {
+
+
+        // -------------------------------------------------
+        // IMAGEN
+        // -------------------------------------------------
+
+        if (machineImage) {
+
+            machineImage.src =
+                "/r3d_machine_configurator/static/src/img/identity.png";
+
+            machineImage.alt =
+                "R3DIMENSION IDENTITY";
+        }
+
+
+        // -------------------------------------------------
+        // NOMBRE VISUAL
+        // -------------------------------------------------
+
+        if (visualMachineName) {
+
+            visualMachineName.textContent =
+                "IDENTITY";
+        }
+
+
+        // -------------------------------------------------
+        // DESCRIPCIÓN
+        // -------------------------------------------------
+
+        if (visualMachineDescription) {
+
+            visualMachineDescription.textContent =
+                "Fabricación aditiva industrial de gran formato, diseñada para producción y piezas funcionales.";
+        }
+
+
+        // -------------------------------------------------
+        // TERCERA CARACTERÍSTICA
+        // -------------------------------------------------
+
+        if (featureThird) {
+
+            featureThird.textContent =
+                "ALTA VELOCIDAD";
+        }
+    }
+}
+
+
+// =========================================================
+// SINCRONIZAR CHECK DEL RESUMEN
+// =========================================================
+
+function updateSummaryCheck(extra) {
+
+    const configurationId =
+        extra.dataset.configurationId;
+
+    if (!configurationId) {
+        return;
+    }
+
+
+    // -----------------------------------------------------
+    // BUSCAR OPCIÓN CORRESPONDIENTE EN EL RESUMEN
+    // -----------------------------------------------------
+
+    const summaryOption =
+        document.querySelector(
+            `.r3d-summary-option-selectable[data-configuration-id="${configurationId}"]`
+        );
+
+    if (!summaryOption) {
+        return;
+    }
+
+
+    // -----------------------------------------------------
+    // ACTIVAR / DESACTIVAR CHECK
+    // -----------------------------------------------------
+
+    summaryOption.classList.toggle(
+        "selected",
+        extra.checked
+    );
+}
+
+
+// =========================================================
+// SINCRONIZAR TODOS LOS CHECKS
+// =========================================================
+
+function updateAllSummaryChecks() {
+
+    document.querySelectorAll(
+        ".r3d-extra-option"
+    ).forEach((extra) => {
+
+        updateSummaryCheck(extra);
+
+    });
 }
 
 
@@ -130,8 +329,7 @@ function closeQuoteForm() {
 
 function selectMachine(button) {
 
-    // Si el formulario de oferta estaba abierto,
-    // lo cerramos al cambiar de máquina
+    // Cerrar formulario al cambiar de máquina
     closeQuoteForm();
 
 
@@ -140,10 +338,16 @@ function selectMachine(button) {
     // -----------------------------------------------------
 
     buttons.forEach((btn) => {
-        btn.classList.remove("active");
+
+        btn.classList.remove(
+            "active"
+        );
+
     });
 
-    button.classList.add("active");
+    button.classList.add(
+        "active"
+    );
 
 
     // -----------------------------------------------------
@@ -158,7 +362,7 @@ function selectMachine(button) {
 
 
     // -----------------------------------------------------
-    // NOMBRE EN EL RESUMEN
+    // NOMBRE EN EL PANEL DERECHO
     // -----------------------------------------------------
 
     if (machineName) {
@@ -169,32 +373,16 @@ function selectMachine(button) {
 
 
     // -----------------------------------------------------
-    // IMAGEN
+    // IMAGEN + INFORMACIÓN VISUAL
     // -----------------------------------------------------
 
-    if (machineImage) {
-
-        if (name === "IDENTITY HT") {
-
-            machineImage.src =
-                "/r3d_machine_configurator/static/src/img/identity_ht.png";
-
-            machineImage.alt =
-                "R3DIMENSION IDENTITY HT";
-
-        } else {
-
-            machineImage.src =
-                "/r3d_machine_configurator/static/src/img/identity.png";
-
-            machineImage.alt =
-                "R3DIMENSION IDENTITY";
-        }
-    }
+    updateMachineVisual(
+        name
+    );
 
 
     // -----------------------------------------------------
-    // CONFIGURACIÓN CORRESPONDIENTE
+    // CONFIGURACIÓN IZQUIERDA CORRESPONDIENTE
     // -----------------------------------------------------
 
     configurationBlocks.forEach((block) => {
@@ -204,7 +392,8 @@ function selectMachine(button) {
             machineId
         ) {
 
-            block.style.display = "";
+            block.style.display =
+                "";
 
             block.classList.add(
                 "active"
@@ -220,6 +409,37 @@ function selectMachine(button) {
             );
         }
     });
+
+
+    // -----------------------------------------------------
+    // RESUMEN DERECHO CORRESPONDIENTE
+    // -----------------------------------------------------
+
+    summaryConfigurationBlocks.forEach((block) => {
+
+        if (
+            block.dataset.machineId ===
+            machineId
+        ) {
+
+            block.classList.add(
+                "active"
+            );
+
+        } else {
+
+            block.classList.remove(
+                "active"
+            );
+        }
+    });
+
+
+    // -----------------------------------------------------
+    // SINCRONIZAR CHECKS DEL RESUMEN
+    // -----------------------------------------------------
+
+    updateAllSummaryChecks();
 
 
     // -----------------------------------------------------
@@ -261,8 +481,32 @@ document.querySelectorAll(
         "change",
         () => {
 
+
+            // ---------------------------------------------
+            // ACTUALIZAR PRECIO
+            // ---------------------------------------------
+
             calculateTotal();
+
+
+            // ---------------------------------------------
+            // ACTUALIZAR CHECK DEL RESUMEN
+            // ---------------------------------------------
+
+            updateSummaryCheck(
+                extra
+            );
+
         }
+    );
+
+
+    // -----------------------------------------------------
+    // SINCRONIZAR ESTADO INICIAL
+    // -----------------------------------------------------
+
+    updateSummaryCheck(
+        extra
     );
 
 });
@@ -285,7 +529,6 @@ if (quoteButton && quoteForm) {
                 "none";
         }
     );
-
 }
 
 
@@ -302,14 +545,14 @@ if (quoteClose) {
             closeQuoteForm();
         }
     );
-
 }
+
 
 // =========================================================
 // ENVIAR SOLICITUD A ODOO
 // =========================================================
 
-if (quoteSubmit) {
+if (quoteSubmit && quoteForm) {
 
     quoteSubmit.addEventListener(
         "click",
@@ -369,6 +612,7 @@ if (quoteSubmit) {
                 !activeButton ||
                 !activeConfiguration
             ) {
+
                 return;
             }
 
@@ -386,8 +630,10 @@ if (quoteSubmit) {
                 .forEach((extra) => {
 
                     extras.push({
+
                         configuration_id:
                             extra.dataset.configurationId,
+
                     });
 
                 });
@@ -400,11 +646,16 @@ if (quoteSubmit) {
             const originalText =
                 quoteSubmit.textContent;
 
-            quoteSubmit.disabled = true;
+            quoteSubmit.disabled =
+                true;
 
             quoteSubmit.textContent =
                 "ENVIANDO...";
 
+
+            // ---------------------------------------------
+            // ENVIAR A ODOO
+            // ---------------------------------------------
 
             try {
 
@@ -414,14 +665,22 @@ if (quoteSubmit) {
                         method: "POST",
 
                         headers: {
+
                             "Content-Type":
                                 "application/json",
+
                         },
 
                         body: JSON.stringify({
-                            jsonrpc: "2.0",
-                            method: "call",
+
+                            jsonrpc:
+                                "2.0",
+
+                            method:
+                                "call",
+
                             params: {
+
                                 machine_id:
                                     activeButton.dataset.machineId,
 
@@ -443,7 +702,10 @@ if (quoteSubmit) {
                                 comments:
                                     comments,
                             },
-                            id: Date.now(),
+
+                            id:
+                                Date.now(),
+
                         }),
                     }
                 );
@@ -452,10 +714,13 @@ if (quoteSubmit) {
                 const data =
                     await response.json();
 
-
                 const result =
                     data.result;
 
+
+                // -----------------------------------------
+                // ÉXITO
+                // -----------------------------------------
 
                 if (
                     result &&
@@ -513,6 +778,7 @@ if (quoteSubmit) {
     );
 }
 
+
 // =========================================================
 // ESTADO INICIAL
 // =========================================================
@@ -532,5 +798,15 @@ configurationBlocks.forEach((block) => {
 });
 
 
-// Calcular precio inicial
+// =========================================================
+// SINCRONIZAR RESUMEN INICIAL
+// =========================================================
+
+updateAllSummaryChecks();
+
+
+// =========================================================
+// PRECIO INICIAL
+// =========================================================
+
 calculateTotal();

@@ -3,48 +3,25 @@
    ========================================================= */
 
 
-/* ---------------------------------------------------------
-   VARIABLES
-   --------------------------------------------------------- */
-
-:root {
-    --r3d-red: #a51f2d;
-    --r3d-red-hover: #c12635;
-
-    --r3d-black: #080a0c;
-    --r3d-dark: #101316;
-    --r3d-panel: #161a1e;
-    --r3d-panel-light: #1d2227;
-
-    --r3d-border: rgba(255, 255, 255, 0.10);
-    --r3d-border-light: rgba(255, 255, 255, 0.18);
-
-    --r3d-text: #ffffff;
-    --r3d-muted: #9ca3aa;
-
-    --r3d-radius: 8px;
-}
-
-
-/* ---------------------------------------------------------
+/* =========================================================
    CONTENEDOR GENERAL
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .r3d-configurator {
     width: 100%;
     min-height: calc(100vh - 80px);
 
+    padding: 45px 30px 90px;
+
     background:
         radial-gradient(
-            circle at 35% 35%,
+            circle at 35% 25%,
             #22282d 0%,
             #111518 38%,
             #080a0c 72%
         );
 
     color: var(--r3d-text);
-
-    padding: 55px 30px 70px;
 }
 
 
@@ -61,38 +38,38 @@
    ========================================================= */
 
 .r3d-configurator-header {
-    text-align: center;
+    margin-bottom: 36px;
 
-    margin-bottom: 45px;
+    text-align: center;
 }
 
 
 .r3d-configurator-header h1 {
     margin: 0;
 
+    color: #ffffff;
+
     font-size: clamp(34px, 4vw, 56px);
     font-weight: 700;
 
     letter-spacing: -1.5px;
-
-    color: #ffffff;
 }
 
 
 .r3d-configurator-header p {
     max-width: 720px;
 
-    margin: 15px auto 30px;
+    margin: 13px auto 25px;
 
     color: var(--r3d-muted);
 
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.6;
 }
 
 
 /* =========================================================
-   SELECTOR IDENTITY / IDENTITY HT
+   SELECTOR DE MÁQUINA
    ========================================================= */
 
 .r3d-machine-selector {
@@ -100,11 +77,10 @@
 
     padding: 4px;
 
-    background: rgba(255, 255, 255, 0.05);
-
     border: 1px solid var(--r3d-border);
-
     border-radius: var(--r3d-radius);
+
+    background: rgba(255, 255, 255, 0.05);
 }
 
 
@@ -130,7 +106,7 @@
     transition:
         background 0.2s ease,
         color 0.2s ease,
-        transform 0.2s ease;
+        box-shadow 0.2s ease;
 }
 
 
@@ -142,17 +118,17 @@
 
 
 .r3d-machine-button.active {
-    background: var(--r3d-red);
-
     color: #ffffff;
 
+    background: var(--r3d-red);
+
     box-shadow:
-        0 6px 22px rgba(165, 31, 45, 0.25);
+        0 6px 22px rgba(181, 31, 50, 0.25);
 }
 
 
 /* =========================================================
-   CUERPO DEL CONFIGURADOR
+   CUERPO PRINCIPAL
    ========================================================= */
 
 .r3d-configurator-main {
@@ -164,32 +140,44 @@
 
     gap: 30px;
 
-    align-items: stretch;
+    align-items: start;
+}
+
+
+.r3d-configurator-left {
+    min-width: 0;
+}
+
+
+.r3d-configurator-right {
+    position: sticky;
+
+    top: 100px;
+
+    align-self: start;
+
+    min-width: 0;
 }
 
 
 /* =========================================================
-   ZONA DE LA MÁQUINA
+   VISUALIZACIÓN DE LA MÁQUINA
    ========================================================= */
 
 .r3d-machine-view {
     position: relative;
 
+    width: 100%;
     min-height: 650px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     overflow: hidden;
 
     border: 1px solid var(--r3d-border);
-
     border-radius: var(--r3d-radius);
 
     background:
         radial-gradient(
-            circle at 55% 45%,
+            circle at 58% 47%,
             #2b3136 0%,
             #171b1f 43%,
             #0b0d0f 78%
@@ -200,16 +188,16 @@
 }
 
 
-/* Línea de suelo */
-
 .r3d-machine-view::after {
     content: "";
 
     position: absolute;
 
-    left: 10%;
-    right: 10%;
-    bottom: 8%;
+    left: 8%;
+    right: 8%;
+    bottom: 115px;
+
+    z-index: 1;
 
     height: 1px;
 
@@ -217,25 +205,86 @@
         linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.10),
             transparent
         );
 }
 
 
+/* =========================================================
+   INFORMACIÓN DE LA MÁQUINA
+   ========================================================= */
+
+.r3d-machine-info {
+    position: absolute;
+
+    top: 32px;
+    left: 38px;
+
+    z-index: 20;
+
+    width: 520px;
+
+    pointer-events: none;
+}
+
+
+.r3d-machine-info-label {
+    margin-bottom: 10px;
+
+    color: var(--r3d-red-hover);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 2.5px;
+}
+
+
+.r3d-visual-machine-name {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 52px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -1.5px;
+}
+
+
+.r3d-visual-machine-description {
+    max-width: 520px;
+
+    margin: 16px 0 0;
+
+    color: #b9c1c8;
+
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   IMAGEN DE LA MÁQUINA
+   ========================================================= */
+
 .r3d-machine-visual {
-    position: relative;
-
-    z-index: 2;
-
     width: 100%;
-    min-height: 650px;
+    height: 650px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 35px;
+    padding:
+        120px
+        35px
+        125px;
 }
 
 
@@ -245,10 +294,12 @@
     width: auto;
     height: auto;
 
-    max-width: 95%;
-    max-height: 610px;
+    max-width: 88%;
+    max-height: 500px;
 
     object-fit: contain;
+
+    transform: translateY(70px);
 
     filter:
         drop-shadow(
@@ -261,42 +312,586 @@
 }
 
 
-.r3d-machine-image:hover {
-    transform: scale(1.015);
+/* =========================================================
+   CARACTERÍSTICAS INFERIORES
+   ========================================================= */
+
+.r3d-machine-features {
+    position: absolute;
+
+    left: 38px;
+    right: 38px;
+    bottom: 28px;
+
+    z-index: 30;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    align-items: start;
+
+    pointer-events: none;
+}
+
+
+.r3d-machine-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+
+    padding: 0 25px;
+
+    border-right:
+        1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+.r3d-machine-feature:first-child {
+    padding-left: 0;
+}
+
+
+.r3d-machine-feature:last-child {
+    padding-right: 0;
+
+    border-right: none;
+}
+
+
+.r3d-machine-feature span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--r3d-red-hover);
+
+    font-size: 32px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 1.5px;
+}
+
+
+.r3d-machine-feature strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: 0.6px;
 }
 
 
 /* =========================================================
-   PANEL DERECHO
+   ZONA DE CONFIGURACIÓN
    ========================================================= */
 
-.r3d-summary {
-    position: relative;
+.r3d-configuration-sections {
+    margin-top: 30px;
 
-    min-height: 650px;
-
-    padding: 34px;
+    padding: 42px;
 
     border: 1px solid var(--r3d-border);
-
     border-radius: var(--r3d-radius);
 
     background:
         linear-gradient(
             145deg,
-            rgba(30, 35, 40, 0.97),
-            rgba(16, 19, 22, 0.98)
+            rgba(24, 28, 32, 0.98),
+            rgba(12, 15, 18, 0.99)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   MÁQUINAS / VISIBILIDAD
+   ========================================================= */
+
+.r3d-machine-options {
+    display: none;
+}
+
+
+.r3d-machine-options.active {
+    display: block;
+}
+
+
+/* =========================================================
+   CABECERA CONFIGURACIÓN
+   ========================================================= */
+
+.r3d-configuration-section-header {
+    position: relative;
+
+    max-width: 720px;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 30px;
+
+    border-bottom:
+        1px solid var(--r3d-border);
+}
+
+
+.r3d-configuration-section-header::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 70px;
+    height: 3px;
+
+    background: var(--r3d-red);
+}
+
+
+.r3d-configuration-step {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--r3d-red-hover);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.r3d-configuration-section-header h2 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: 650;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.7px;
+}
+
+
+.r3d-configuration-section-header p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: var(--r3d-muted);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   GRID DE OPCIONES
+   ========================================================= */
+
+.r3d-configuration-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   TARJETA DE CONFIGURACIÓN
+   ========================================================= */
+
+.r3d-config-card {
+    position: relative;
+
+    min-width: 0;
+    min-height: 235px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.11);
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31, 36, 41, 0.96),
+            rgba(19, 23, 27, 0.98)
+        );
+
+    color: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+label.r3d-config-card {
+    cursor: pointer;
+}
+
+
+label.r3d-config-card:hover {
+    border-color:
+        rgba(255, 255, 255, 0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 43, 48, 0.98),
+            rgba(22, 26, 30, 0.99)
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   CABECERA DE TARJETA
+   ========================================================= */
+
+.r3d-config-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.r3d-config-card-status {
+    color: #8e979e;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   SELECTOR CIRCULAR
+   ========================================================= */
+
+.r3d-config-card-selector,
+.r3d-config-card-check {
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   CHECKBOX REAL OCULTO
+   ========================================================= */
+
+.r3d-config-card .r3d-extra-option {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    margin: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TARJETA SELECCIONADA
+   ========================================================= */
+
+.r3d-config-card-selectable:has(
+    .r3d-extra-option:checked
+) {
+    border-color: var(--r3d-red);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(181, 31, 50, 0.16),
+            rgba(24, 27, 31, 0.98)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(181, 31, 50, 0.18),
+        0 16px 38px rgba(0, 0, 0, 0.25);
+}
+
+
+.r3d-config-card-selectable:has(
+    .r3d-extra-option:checked
+) .r3d-config-card-selector {
+    border-color: var(--r3d-red);
+
+    background: var(--r3d-red);
+
+    box-shadow:
+        0 0 0 4px rgba(181, 31, 50, 0.13);
+}
+
+
+.r3d-config-card-selectable:has(
+    .r3d-extra-option:checked
+) .r3d-config-card-selector::after {
+    content: "✓";
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TARJETA INCLUIDA
+   ========================================================= */
+
+.r3d-config-card-included {
+    border-color:
+        rgba(181, 31, 50, 0.40);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(181, 31, 50, 0.09),
+            rgba(19, 23, 27, 0.98)
+        );
+}
+
+
+.r3d-config-card-included .r3d-config-card-status {
+    color: #d95b6a;
+}
+
+
+.r3d-config-card-check {
+    border-color: var(--r3d-red);
+
+    background:
+        rgba(181, 31, 50, 0.20);
+
+    color: #e95466;
+}
+
+
+/* =========================================================
+   CUERPO DE LAS TARJETAS
+   ========================================================= */
+
+.r3d-config-card-body {
+    display: grid;
+
+    grid-template-columns:
+        145px
+        minmax(0, 1fr);
+
+    gap: 24px;
+
+    align-items: center;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   IMAGEN DE LA OPCIÓN
+   ========================================================= */
+
+.r3d-config-card-image {
+    width: 145px;
+    height: 125px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 5px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+}
+
+
+.r3d-config-card-image span {
+    color: #69727a;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.r3d-config-card-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 10px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   CONTENIDO TARJETA
+   ========================================================= */
+
+.r3d-config-card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.r3d-config-card-body .r3d-config-card-content {
+    height: 100%;
+
+    justify-content: center;
+}
+
+
+.r3d-config-card-content h3 {
+    margin: 0 0 9px;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 650;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.2px;
+}
+
+
+.r3d-config-card-content p {
+    max-width: 360px;
+
+    margin: 0;
+
+    color: #969fa6;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+
+.r3d-config-card-body .r3d-config-card-content p {
+    max-width: none;
+}
+
+
+.r3d-config-card-price {
+    display: block;
+
+    margin-top: 14px;
+    padding-top: 0;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PANEL DERECHO STICKY
+   ========================================================= */
+
+.r3d-summary {
+    position: relative;
+
+    width: 100%;
+    min-height: 650px;
+
+    padding: 34px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--r3d-border);
+    border-radius: var(--r3d-radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29, 34, 39, 0.98),
+            rgba(15, 18, 21, 0.99)
         );
 
     box-shadow:
         0 25px 70px rgba(0, 0, 0, 0.35);
-
-    display: flex;
-    flex-direction: column;
 }
 
-
-/* Barra roja superior */
 
 .r3d-summary::before {
     content: "";
@@ -314,19 +909,19 @@
 
 
 /* =========================================================
-   TÍTULO DEL RESUMEN
+   CABECERA RESUMEN
    ========================================================= */
 
 .r3d-summary-label {
     margin-top: 8px;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
 
     color: var(--r3d-red-hover);
 
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
 
-    letter-spacing: 1.8px;
+    letter-spacing: 2.2px;
 }
 
 
@@ -338,179 +933,114 @@
     font-size: 34px;
     font-weight: 600;
 
-    letter-spacing: -0.5px;
+    letter-spacing: -0.7px;
 }
 
 
 /* =========================================================
-   EQUIPAMIENTO
+   EQUIPAMIENTO DEL RESUMEN
    ========================================================= */
 
-.r3d-machine-configurations {
+.r3d-summary-configurations {
     margin-bottom: 25px;
 }
 
 
-.r3d-machine-options h3 {
+.r3d-summary-machine-options {
+    display: none;
+}
+
+
+.r3d-summary-machine-options.active {
+    display: block;
+}
+
+
+.r3d-summary-machine-options h3 {
     margin: 0 0 14px;
 
     padding-bottom: 12px;
 
-    border-bottom: 1px solid var(--r3d-border);
+    border-bottom:
+        1px solid var(--r3d-border);
 
     color: #ffffff;
 
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 800;
 
     text-transform: uppercase;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.1px;
 }
 
 
 /* =========================================================
-   OPCIONES
+   FILAS DEL RESUMEN
    ========================================================= */
 
-.r3d-option {
+.r3d-summary-option {
     width: 100%;
-
-    min-height: 55px;
+    min-height: 45px;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    gap: 12px;
+    gap: 15px;
 
-    margin-bottom: 8px;
+    padding: 9px 0;
 
-    padding: 12px 14px;
-
-    border: 1px solid var(--r3d-border);
-
-    border-radius: 5px;
-
-    background: rgba(255, 255, 255, 0.025);
-
-    color: #e7e9eb;
-
-    cursor: pointer;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease;
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
 }
 
 
-label.r3d-option:hover {
-    border-color: rgba(255, 255, 255, 0.25);
+.r3d-summary-option span {
+    min-width: 0;
 
-    background: rgba(255, 255, 255, 0.055);
-
-    transform: translateX(2px);
-}
-
-
-/* Nombre */
-
-.r3d-option span {
-    flex: 1;
-
-    font-size: 14px;
-    font-weight: 500;
-}
-
-
-/* Precio / incluido */
-
-.r3d-option strong {
-    white-space: nowrap;
-
-    color: #ffffff;
+    color: #d8dcdf;
 
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 500;
+
+    line-height: 1.35;
+}
+
+
+.r3d-summary-option strong {
+    flex: 0 0 auto;
+
+    color: #929ba2;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
+
+.r3d-summary-option-included strong {
+    color: #b5bdc3;
+}
+
+
+.r3d-summary-selected-options {
+    width: 100%;
 }
 
 
 /* =========================================================
-   CHECKBOX
+   CHECKS DEL RESUMEN
    ========================================================= */
 
-.r3d-extra-option {
-    appearance: none;
-    -webkit-appearance: none;
+.r3d-summary-check {
+    width: 20px;
+    height: 20px;
 
-    flex: 0 0 19px;
-
-    width: 19px;
-    height: 19px;
-
-    margin: 0;
-
-    border: 1px solid rgba(255, 255, 255, 0.35);
-
-    border-radius: 3px;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    position: relative;
-
-    transition:
-        background 0.15s ease,
-        border-color 0.15s ease;
-}
-
-
-.r3d-extra-option:checked {
-    border-color: var(--r3d-red);
-
-    background: var(--r3d-red);
-}
-
-
-.r3d-extra-option:checked::after {
-    content: "";
-
-    position: absolute;
-
-    left: 6px;
-    top: 2px;
-
-    width: 5px;
-    height: 10px;
-
-    border: solid #ffffff;
-
-    border-width: 0 2px 2px 0;
-
-    transform: rotate(45deg);
-}
-
-
-/* =========================================================
-   OPCIONES INCLUIDAS
-   ========================================================= */
-
-.r3d-option-included {
-    cursor: default;
-
-    background:
-        rgba(255, 255, 255, 0.035);
-}
-
-
-.r3d-option-included::before {
-    content: "✓";
-
-    width: 19px;
-    height: 19px;
-
-    flex: 0 0 19px;
+    flex: 0 0 20px;
 
     display: flex;
     align-items: center;
@@ -518,36 +1048,101 @@ label.r3d-option:hover {
 
     border-radius: 50%;
 
-    background: rgba(165, 31, 45, 0.20);
+    background: rgba(181, 31, 50, 0.18);
 
-    color: #e84b59;
+    color: #e54a5d;
 
     font-size: 11px;
     font-weight: 800;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.2s ease,
+        background 0.2s ease;
 }
 
 
-.r3d-option-included strong {
-    color: #aeb5ba;
+.r3d-summary-option-included .r3d-summary-check {
+    opacity: 1;
+}
 
-    font-size: 12px;
 
-    text-transform: uppercase;
-
-    letter-spacing: 0.4px;
+.r3d-summary-option-selectable.selected .r3d-summary-check {
+    opacity: 1;
 }
 
 
 /* =========================================================
-   PRECIO TOTAL
+   OPCIONES NO SELECCIONADAS MUY ATENUADAS
+   ========================================================= */
+
+.r3d-summary-option-selectable {
+    opacity: 0.12;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+.r3d-summary-option-selectable.selected {
+    opacity: 1;
+}
+
+
+.r3d-summary-option-included {
+    opacity: 1;
+}
+
+
+.r3d-summary-option-selectable:hover {
+    opacity: 0.28;
+}
+
+
+.r3d-summary-option-selectable.selected:hover {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   NOMBRE / PRECIO RESUMEN
+   ========================================================= */
+
+.r3d-summary-option-name {
+    flex: 1;
+
+    min-width: 0;
+
+    color: #e7e9eb;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    line-height: 1.35;
+}
+
+
+.r3d-summary-option-price {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   PRECIO
    ========================================================= */
 
 .r3d-total {
+    position: relative;
+
     margin-top: auto;
 
-    padding: 24px 0 22px;
+    padding: 24px 0 8px;
 
-    border-top: 1px solid var(--r3d-border);
+    border-top:
+        1px solid var(--r3d-border);
 
     display: flex;
     align-items: flex-end;
@@ -558,22 +1153,45 @@ label.r3d-option:hover {
 
 
 .r3d-total span {
+    padding-bottom: 4px;
+
     color: #aeb4b9;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
 
-    letter-spacing: 1.2px;
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
 }
 
 
 .r3d-total strong {
     color: #ffffff;
 
-    font-size: 29px;
+    font-size: 30px;
     font-weight: 700;
 
     line-height: 1;
+
+    letter-spacing: -0.7px;
+}
+
+
+.r3d-total::after {
+    content: "IVA no incluido";
+
+    position: absolute;
+
+    right: 0;
+    bottom: -13px;
+
+    color: #747d84;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
 }
 
 
@@ -582,22 +1200,306 @@ label.r3d-option:hover {
    ========================================================= */
 
 .r3d-quote-button {
-    width: 100%;
+    position: relative;
 
+    width: 100%;
     min-height: 56px;
 
-    border: 1px solid var(--r3d-red);
+    margin-top: 28px;
 
+    overflow: hidden;
+
+    border: 1px solid var(--r3d-red);
     border-radius: 4px;
 
-    background: var(--r3d-red);
+    background:
+        linear-gradient(
+            135deg,
+            #a91d30,
+            #c12237
+        );
 
     color: #ffffff;
 
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 800;
 
-    letter-spacing: 0.7px;
+    letter-spacing: 0.9px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(181, 31, 50, 0.16);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.r3d-quote-button:hover {
+    border-color: var(--r3d-red-hover);
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd2035,
+            #d02940
+        );
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 32px rgba(181, 31, 50, 0.28);
+}
+
+
+.r3d-quote-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+.r3d-quote-form {
+    margin-top: 22px;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid var(--r3d-border);
+
+    animation:
+        r3dFormOpen 0.25s ease;
+}
+
+
+@keyframes r3dFormOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.r3d-quote-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+.r3d-quote-form-header h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 600;
+
+    letter-spacing: -0.4px;
+}
+
+
+.r3d-quote-close {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid var(--r3d-border-light);
+
+    border-radius: 4px;
+
+    background: transparent;
+
+    color: #aeb4b9;
+
+    font-size: 22px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.r3d-quote-close:hover {
+    color: #ffffff;
+
+    border-color: var(--r3d-red);
+
+    background:
+        rgba(181, 31, 50, 0.15);
+}
+
+
+.r3d-quote-intro {
+    margin: 0 0 22px;
+
+    color: var(--r3d-muted);
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   CAMPOS DEL FORMULARIO
+   ========================================================= */
+
+.r3d-form-field {
+    margin-bottom: 15px;
+}
+
+
+.r3d-form-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #c8cdd1;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+}
+
+
+.r3d-form-field input,
+.r3d-form-field textarea {
+    display: block;
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border:
+        1px solid var(--r3d-border-light);
+
+    border-radius: 4px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.r3d-form-field input {
+    min-height: 44px;
+}
+
+
+.r3d-form-field textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+.r3d-form-field input:hover,
+.r3d-form-field textarea:hover {
+    border-color:
+        rgba(255, 255, 255, 0.30);
+}
+
+
+.r3d-form-field input:focus,
+.r3d-form-field textarea:focus {
+    border-color: var(--r3d-red);
+
+    background:
+        rgba(255, 255, 255, 0.065);
+
+    box-shadow:
+        0 0 0 3px rgba(181, 31, 50, 0.12);
+}
+
+
+/* =========================================================
+   AUTOCOMPLETADO
+   ========================================================= */
+
+.r3d-form-field input:-webkit-autofill,
+.r3d-form-field input:-webkit-autofill:hover,
+.r3d-form-field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+
+    -webkit-box-shadow:
+        0 0 0 1000px #1b1f23 inset;
+
+    transition:
+        background-color 9999s ease-in-out 0s;
+}
+
+
+/* =========================================================
+   BOTÓN ENVIAR
+   ========================================================= */
+
+.r3d-quote-submit {
+    width: 100%;
+    min-height: 54px;
+
+    margin-top: 7px;
+
+    padding: 13px 20px;
+
+    border: 1px solid var(--r3d-red);
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a91d30,
+            #c12237
+        );
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
 
     cursor: pointer;
 
@@ -609,41 +1511,148 @@ label.r3d-option:hover {
 }
 
 
-.r3d-quote-button:hover {
-    background: var(--r3d-red-hover);
-
+.r3d-quote-submit:hover {
     border-color: var(--r3d-red-hover);
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd2035,
+            #d02940
+        );
 
     transform: translateY(-1px);
 
     box-shadow:
-        0 10px 30px rgba(165, 31, 45, 0.25);
+        0 10px 30px rgba(181, 31, 50, 0.25);
+}
+
+
+.r3d-quote-submit:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+
+    transform: none;
 }
 
 
 /* =========================================================
-   TABLET
+   SOLICITUD ENVIADA
+   ========================================================= */
+
+.r3d-quote-success {
+    padding: 10px 0 5px;
+}
+
+
+.r3d-quote-success::before {
+    content: "✓";
+
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(181, 31, 50, 0.16);
+
+    border:
+        1px solid rgba(207, 38, 59, 0.35);
+
+    color: #e84b5e;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.r3d-quote-success h3 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 600;
+
+    letter-spacing: -0.4px;
+}
+
+
+.r3d-quote-success p {
+    max-width: 330px;
+
+    margin: 0;
+
+    color: var(--r3d-muted);
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   TABLET / PANTALLAS MEDIAS
    ========================================================= */
 
 @media (max-width: 1100px) {
 
     .r3d-configurator-main {
         grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    .r3d-configurator-right {
+        position: static;
     }
 
 
     .r3d-machine-view {
-        min-height: 550px;
+        min-height: 570px;
+    }
+
+
+    .r3d-machine-info {
+        top: 25px;
+        left: 25px;
+
+        width: 430px;
+    }
+
+
+    .r3d-visual-machine-name {
+        font-size: 44px;
     }
 
 
     .r3d-machine-visual {
-        min-height: 550px;
+        height: 570px;
+
+        padding:
+            110px
+            30px
+            115px;
     }
 
 
     .r3d-machine-image {
-        max-height: 500px;
+        max-width: 82%;
+        max-height: 430px;
+    }
+
+
+    .r3d-machine-features {
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
     }
 
 
@@ -662,13 +1671,14 @@ label.r3d-option:hover {
 
     .r3d-configurator {
         padding:
-            35px 15px
+            30px
+            15px
             50px;
     }
 
 
     .r3d-configurator-header {
-        margin-bottom: 30px;
+        margin-bottom: 28px;
     }
 
 
@@ -678,7 +1688,7 @@ label.r3d-option:hover {
 
 
     .r3d-configurator-header p {
-        font-size: 16px;
+        font-size: 15px;
     }
 
 
@@ -694,37 +1704,186 @@ label.r3d-option:hover {
 
         min-width: 0;
 
-        padding: 14px 10px;
+        padding:
+            14px
+            10px;
 
-        font-size: 13px;
-    }
-
-
-    .r3d-configurator-main {
-        gap: 18px;
+        font-size: 12px;
     }
 
 
     .r3d-machine-view {
-        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+
+        min-height: auto;
+    }
+
+
+    .r3d-machine-view::after {
+        display: none;
+    }
+
+
+    .r3d-machine-info {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        width: 100%;
+
+        padding:
+            25px
+            22px
+            0;
+    }
+
+
+    .r3d-machine-info-label {
+        font-size: 11px;
+    }
+
+
+    .r3d-visual-machine-name {
+        font-size: 36px;
+    }
+
+
+    .r3d-visual-machine-description {
+        max-width: 100%;
+
+        font-size: 14px;
     }
 
 
     .r3d-machine-visual {
-        min-height: 400px;
+        order: 2;
 
-        padding: 15px;
+        height: auto;
+        min-height: 340px;
+
+        padding:
+            40px
+            15px
+            25px;
     }
 
 
     .r3d-machine-image {
         max-width: 100%;
-        max-height: 370px;
+        max-height: 330px;
+
+        transform: none;
+    }
+
+
+    .r3d-machine-features {
+        position: relative;
+
+        order: 3;
+
+        left: auto;
+        right: auto;
+        bottom: auto;
+
+        width: 100%;
+
+        padding:
+            0
+            22px
+            25px;
+    }
+
+
+    .r3d-machine-feature {
+        padding:
+            0
+            10px;
+    }
+
+
+    .r3d-machine-feature:first-child {
+        padding-left: 0;
+    }
+
+
+    .r3d-machine-feature:last-child {
+        padding-right: 0;
+    }
+
+
+    .r3d-machine-feature span {
+        margin-bottom: 7px;
+
+        font-size: 22px;
+    }
+
+
+    .r3d-machine-feature strong {
+        font-size: 9px;
+    }
+
+
+    .r3d-configuration-sections {
+        margin-top: 18px;
+
+        padding:
+            28px
+            20px;
+    }
+
+
+    .r3d-configuration-section-header {
+        margin-bottom: 25px;
+
+        padding-bottom: 23px;
+    }
+
+
+    .r3d-configuration-section-header h2 {
+        font-size: 28px;
+    }
+
+
+    .r3d-configuration-options {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .r3d-config-card {
+        min-height: 205px;
+
+        padding: 20px;
+    }
+
+
+    .r3d-config-card-top {
+        margin-bottom: 18px;
+    }
+
+
+    .r3d-config-card-body {
+        grid-template-columns:
+            105px
+            minmax(0, 1fr);
+
+        gap: 16px;
+    }
+
+
+    .r3d-config-card-image {
+        width: 105px;
+        height: 100px;
     }
 
 
     .r3d-summary {
-        padding: 25px 20px;
+        padding:
+            25px
+            20px;
     }
 
 
@@ -742,6 +1901,16 @@ label.r3d-option:hover {
         font-size: 25px;
     }
 
+
+    .r3d-quote-form-header h3 {
+        font-size: 22px;
+    }
+
+
+    .r3d-form-field input {
+        min-height: 46px;
+    }
+
 }
 
 
@@ -756,19 +1925,65 @@ label.r3d-option:hover {
     }
 
 
-    .r3d-machine-view,
+    .r3d-visual-machine-name {
+        font-size: 32px;
+    }
+
+
     .r3d-machine-visual {
-        min-height: 330px;
+        min-height: 290px;
     }
 
 
     .r3d-machine-image {
-        max-height: 300px;
+        max-height: 280px;
     }
 
 
-    .r3d-option {
-        padding: 11px 10px;
+    .r3d-machine-feature span {
+        font-size: 18px;
+    }
+
+
+    .r3d-machine-feature strong {
+        font-size: 7px;
+    }
+
+
+    .r3d-configuration-sections {
+        padding:
+            24px
+            16px;
+    }
+
+
+    .r3d-config-card {
+        min-height: 150px;
+
+        padding: 18px;
+    }
+
+
+    .r3d-config-card-top {
+        margin-bottom: 16px;
+    }
+
+
+    .r3d-config-card-body {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+
+    .r3d-config-card-image {
+        width: 100%;
+        height: 140px;
+    }
+
+
+    .r3d-config-card-content h3 {
+        font-size: 17px;
     }
 
 
@@ -779,243 +1994,11 @@ label.r3d-option:hover {
         gap: 8px;
     }
 
-}
 
-/* =========================================================
-   FORMULARIO SOLICITAR OFERTA
-   ========================================================= */
+    .r3d-total::after {
+        position: static;
 
-.r3d-quote-form {
-    margin-top: 5px;
-    padding-top: 5px;
-    animation: r3dFormOpen 0.25s ease;
-}
-
-@keyframes r3dFormOpen {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* CABECERA */
-
-.r3d-quote-form-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    margin-bottom: 8px;
-}
-
-.r3d-quote-form-header h3 {
-    margin: 0;
-
-    color: #ffffff;
-
-    font-size: 25px;
-    font-weight: 600;
-    letter-spacing: -0.4px;
-}
-
-.r3d-quote-close {
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex: 0 0 34px;
-
-    padding: 0;
-
-    border: 1px solid var(--r3d-border-light);
-    border-radius: 4px;
-
-    background: transparent;
-
-    color: #aeb4b9;
-
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-}
-
-.r3d-quote-close:hover {
-    color: #ffffff;
-    border-color: var(--r3d-red);
-    background: rgba(165, 31, 45, 0.15);
-}
-
-
-/* TEXTO INTRODUCTORIO */
-
-.r3d-quote-intro {
-    margin: 0 0 22px;
-
-    color: var(--r3d-muted);
-
-    font-size: 14px;
-    line-height: 1.55;
-}
-
-
-/* CAMPOS */
-
-.r3d-form-field {
-    margin-bottom: 15px;
-}
-
-.r3d-form-field label {
-    display: block;
-
-    margin-bottom: 6px;
-
-    color: #c8cdd1;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    letter-spacing: 0.3px;
-}
-
-.r3d-form-field input,
-.r3d-form-field textarea {
-    display: block;
-
-    width: 100%;
-
-    padding: 11px 12px;
-
-    border: 1px solid var(--r3d-border-light);
-    border-radius: 4px;
-
-    outline: none;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    color: #ffffff;
-
-    font-family: inherit;
-    font-size: 14px;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.r3d-form-field input {
-    min-height: 44px;
-}
-
-.r3d-form-field textarea {
-    min-height: 100px;
-
-    resize: vertical;
-}
-
-.r3d-form-field input:hover,
-.r3d-form-field textarea:hover {
-    border-color: rgba(255, 255, 255, 0.30);
-}
-
-.r3d-form-field input:focus,
-.r3d-form-field textarea:focus {
-    border-color: var(--r3d-red);
-
-    background: rgba(255, 255, 255, 0.065);
-
-    box-shadow:
-        0 0 0 3px rgba(165, 31, 45, 0.12);
-}
-
-
-/* AUTOCOMPLETADO DEL NAVEGADOR */
-
-.r3d-form-field input:-webkit-autofill,
-.r3d-form-field input:-webkit-autofill:hover,
-.r3d-form-field input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #ffffff;
-
-    -webkit-box-shadow:
-        0 0 0 1000px #1b1f23 inset;
-
-    transition:
-        background-color 9999s ease-in-out 0s;
-}
-
-
-/* BOTÓN ENVIAR */
-
-.r3d-quote-submit {
-    width: 100%;
-
-    min-height: 54px;
-
-    margin-top: 7px;
-
-    padding: 13px 20px;
-
-    border: 1px solid var(--r3d-red);
-    border-radius: 4px;
-
-    background: var(--r3d-red);
-
-    color: #ffffff;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: 0.7px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.r3d-quote-submit:hover {
-    background: var(--r3d-red-hover);
-    border-color: var(--r3d-red-hover);
-
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 10px 30px rgba(165, 31, 45, 0.25);
-}
-
-
-/* =========================================================
-   FORMULARIO - MÓVIL
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    .r3d-quote-form-header h3 {
-        font-size: 22px;
-    }
-
-    .r3d-form-field input {
-        min-height: 46px;
+        margin-top: -4px;
     }
 
 }

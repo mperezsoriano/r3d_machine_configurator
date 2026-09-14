@@ -9,6 +9,11 @@ configuration_ids = fields.One2many(
     string="Configuración",
 )
 
+product_id = fields.Many2one(
+    "product.product",
+    string="Producto de venta",
+)
+
 class R3DMachine(models.Model):
     _name = "r3d.machine"
     _description = "R3D Machine"

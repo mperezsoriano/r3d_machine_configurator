@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- =========================================================
+         HEADER R3DIMENSION
+         Sustituye el header estándar del Website
+         ========================================================= -->
+
+    <template
+        id="r3d_website_header"
+        inherit_id="website.layout"
+        name="R3DIMENSION Website Header">
+
+        <xpath expr="//header" position="replace">
+
+            <header class="r3d-website-header">
+
+                <div class="r3d-header-container">
+
+                    <!-- LOGO -->
+
+                    <a href="/" class="r3d-header-logo">
+
+                        <img
+                            src="/web/image/website/1/logo"
+                            alt="R3DIMENSION Impresoras 3D"/>
+
+                    </a>
+
+
+                    <!-- NAVEGACIÓN PRINCIPAL -->
+
+                    <nav class="r3d-header-nav">
+
+                        <a href="/configurador">
+                            IDENTITY
+                        </a>
+
+                        <a href="/configurador">
+                            CUBE
+                        </a>
+
+                        <a href="/servicio-impresion-3d">
+                            SERVICIO IMPRESIÓN 3D
+                        </a>
+
+                        <a href="/portfolio">
+                            PORTFOLIO
+                        </a>
+
+                        <a href="/blog">
+                            BLOG
+                        </a>
+
+                        <a href="/contactus">
+                            CONTACTO
+                        </a>
+
+                    </nav>
+
+
+                    <!-- ZONA DERECHA -->
+
+                    <div class="r3d-header-actions">
+
+                        <!-- IDIOMA -->
+
+                        <button
+                            type="button"
+                            class="r3d-header-language"
+                            aria-label="Seleccionar idioma">
+
+                            🇪🇸
+
+                        </button>
+
+
+                        <!-- MENÚ -->
+
+                        <button
+                            type="button"
+                            class="r3d-header-menu"
+                            aria-label="Abrir menú">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+        </xpath>
+
+    </template>
+
+</odoo>

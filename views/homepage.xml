@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="r3d_homepage" name="R3DIMENSION Home">
+
+        <t t-call="website.layout">
+
+            <div id="wrap" class="r3d-home">
+
+
+                <!-- =====================================================
+                     HERO
+                     ===================================================== -->
+
+                <section class="r3d-home-hero">
+
+                    <div class="r3d-home-hero-content">
+
+                        <h1>
+                            EL FUTURO<br/>
+                            DE LA FABRICACIÓN<br/>
+                            <span>SE IMPRIME.</span>
+                        </h1>
+
+                        <div class="r3d-home-red-line"></div>
+
+                        <p>
+                            Impresoras 3D industriales de gran formato
+                            para fabricar sin límites.
+                        </p>
+
+                        <strong>
+                            Más productividad. Menos procesos. Menos límites.
+                        </strong>
+
+                        <div class="r3d-home-hero-actions">
+
+                            <a href="/configurador"
+                               class="r3d-home-button r3d-home-button-primary">
+                                DESCUBRE LO QUE PODEMOS HACER
+                                <span>→</span>
+                            </a>
+
+                            <a href="/contactus"
+                               class="r3d-home-button r3d-home-button-secondary">
+                                HABLAR CON UN EXPERTO
+                                <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="r3d-home-hero-image">
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     VENTAJAS
+                     ===================================================== -->
+
+                <section class="r3d-home-benefits">
+
+                    <div class="r3d-home-section-title">
+
+                        <h2>
+                            LA MANERA<br/>
+                            DE FABRICAR<br/>
+                            <span>ESTÁ CAMBIANDO</span>
+                        </h2>
+
+                        <p>
+                            La impresión 3D industrial ya no es solo para
+                            prototipos. Es una tecnología de fabricación real
+                            que permite producir piezas finales, series cortas
+                            y utillajes con una libertad inédita.
+                        </p>
+
+                    </div>
+
+
+                    <div class="r3d-home-benefit">
+
+                        <div class="r3d-home-benefit-icon">
+                            ◇
+                        </div>
+
+                        <h3>SIN LÍMITES</h3>
+
+                        <p>
+                            Piezas de gran tamaño que otros procesos
+                            no pueden fabricar.
+                        </p>
+
+                    </div>
+
+
+                    <div class="r3d-home-benefit">
+
+                        <div class="r3d-home-benefit-icon">
+                            ◷
+                        </div>
+
+                        <h3>MÁS RÁPIDO</h3>
+
+                        <p>
+                            De idea a pieza funcional en una
+                            fracción del tiempo.
+                        </p>
+
+                    </div>
+
+
+                    <div class="r3d-home-benefit">
+
+                        <div class="r3d-home-benefit-icon">
+                            ⚙
+                        </div>
+
+                        <h3>MÁS EFICIENTE</h3>
+
+                        <p>
+                            Menos utillajes, menos operaciones
+                            y menores costes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="r3d-home-benefit">
+
+                        <div class="r3d-home-benefit-icon">
+                            ◫
+                        </div>
+
+                        <h3>A TU MEDIDA</h3>
+
+                        <p>
+                            Personalización masiva y producción
+                            bajo demanda.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     PRODUCTIVIDAD
+                     ===================================================== -->
+
+                <section class="r3d-home-performance">
+
+                    <div class="r3d-home-performance-image">
+                    </div>
+
+
+                    <div class="r3d-home-performance-content">
+
+                        <h2>
+                            PRODUCTIVIDAD
+                            <span>SIN COMPROMISOS</span>
+                        </h2>
+
+
+                        <div class="r3d-home-stats">
+
+                            <div class="r3d-home-stat">
+
+                                <strong>1000</strong>
+
+                                <span>mm/s</span>
+
+                                <p>
+                                    Velocidad de impresión
+                                </p>
+
+                            </div>
+
+
+                            <div class="r3d-home-stat">
+
+                                <strong>180</strong>
+
+                                <span>mm³/s</span>
+
+                                <p>
+                                    Flujo volumétrico
+                                    por extrusor
+                                </p>
+
+                            </div>
+
+
+                            <div class="r3d-home-stat">
+
+                                <strong>24/7</strong>
+
+                                <p>
+                                    Producción continua
+                                </p>
+
+                            </div>
+
+
+                            <div class="r3d-home-stat">
+
+                                <strong>IDEX</strong>
+
+                                <p>
+                                    Independencia total
+                                    para máxima eficiencia
+                                </p>
+
+                            </div>
+
+
+                            <div class="r3d-home-stat">
+
+                                <strong>GRAN<br/>FORMATO</strong>
+
+                                <p>
+                                    Imprime a lo grande.
+                                    Sin límites.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <a href="/configurador"
+                           class="r3d-home-dark-button">
+
+                            CONOCE NUESTRA TECNOLOGÍA
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     IMPRESORAS
+                     ===================================================== -->
+
+                <section class="r3d-home-machines">
+
+                    <div class="r3d-home-machines-intro">
+
+                        <span class="r3d-home-eyebrow">
+                            LA TECNOLOGÍA PARA HACERLO POSIBLE
+                        </span>
+
+                        <h2>
+                            DOS PLATAFORMAS.<br/>
+                            INFINITAS POSIBILIDADES.
+                        </h2>
+
+                        <p>
+                            Hemos diseñado y fabricado nuestras propias
+                            impresoras 3D industriales para ofrecerte el máximo
+                            rendimiento, fiabilidad y libertad de materiales.
+                        </p>
+
+                        <a href="/configurador"
+                           class="r3d-home-button r3d-home-button-secondary">
+
+                            DESCUBRIR NUESTRAS IMPRESORAS
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- IDENTITY -->
+
+                    <a href="/configurador"
+                       class="r3d-home-machine-card">
+
+                        <div class="r3d-home-machine-image r3d-home-identity">
+                        </div>
+
+                        <div class="r3d-home-machine-card-content">
+
+                            <h3>IDENTITY</h3>
+
+                            <strong>
+                                Precisión sin límites.
+                            </strong>
+
+                            <p>
+                                Máxima calidad dimensional
+                                para piezas técnicas.
+                            </p>
+
+                            <span class="r3d-home-machine-arrow">
+                                →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- CUBE -->
+
+                    <a href="/configurador"
+                       class="r3d-home-machine-card">
+
+                        <div class="r3d-home-machine-image r3d-home-cube">
+                        </div>
+
+                        <div class="r3d-home-machine-card-content">
+
+                            <h3>CUBE</h3>
+
+                            <strong>
+                                Productividad extrema.
+                            </strong>
+
+                            <p>
+                                Máximo volumen y rendimiento
+                                para grandes producciones.
+                            </p>
+
+                            <span class="r3d-home-machine-arrow">
+                                →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </section>
+
+
+                <!-- =====================================================
+                     APLICACIONES
+                     ===================================================== -->
+
+                <section class="r3d-home-applications">
+
+                    <h2>
+                        APLICACIONES
+                        <span>REALES.</span>
+                        RESULTADOS REALES.
+                    </h2>
+
+
+                    <div class="r3d-home-applications-grid">
+
+                        <div class="r3d-home-application app-1"></div>
+
+                        <div class="r3d-home-application app-2"></div>
+
+                        <div class="r3d-home-application app-3"></div>
+
+                        <div class="r3d-home-application app-4"></div>
+
+                        <div class="r3d-home-application app-5"></div>
+
+                    </div>
+
+
+                    <div class="r3d-home-applications-action">
+
+                        <a href="/portfolio"
+                           class="r3d-home-button r3d-home-button-secondary">
+
+                            VER MÁS APLICACIONES
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     CTA FINAL
+                     ===================================================== -->
+
+                <section class="r3d-home-final-cta">
+
+                    <div class="r3d-home-final-title">
+
+                        <span class="r3d-home-eyebrow">
+                            HABLEMOS DE TU PROYECTO
+                        </span>
+
+                        <h2>
+                            ¿QUÉ NECESITAS<br/>
+                            <span>FABRICAR?</span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="r3d-home-final-text">
+
+                        <p>
+                            Cuéntanos tu aplicación y nuestro equipo de
+                            ingeniería te ayudará a encontrar la mejor solución
+                            en impresión 3D industrial.
+                        </p>
+
+                        <a href="/contactus"
+                           class="r3d-home-button r3d-home-button-primary">
+
+                            HABLAR CON UN EXPERTO
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="r3d-home-final-image">
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     FOOTER
+                     ===================================================== -->
+
+                <footer class="r3d-home-footer">
+
+                    <div class="r3d-home-footer-brand">
+
+                        <strong>R3DIMENSION</strong>
+
+                        <p>
+                            Fabricantes de impresoras 3D industriales
+                            de gran formato.
+                        </p>
+
+                        <small>
+                            © 2026 R3DIMENSION 3D PRINTERS SL
+                        </small>
+
+                    </div>
+
+
+                    <div class="r3d-home-footer-column">
+
+                        <strong>IMPRESORAS</strong>
+
+                        <a href="/configurador">IDENTITY</a>
+                        <a href="/configurador">CUBE</a>
+
+                    </div>
+
+
+                    <div class="r3d-home-footer-column">
+
+                        <strong>APLICACIONES</strong>
+
+                        <a href="/portfolio">Industria</a>
+                        <a href="/portfolio">Casos de éxito</a>
+                        <a href="/portfolio">Piezas impresas</a>
+
+                    </div>
+
+
+                    <div class="r3d-home-footer-column">
+
+                        <strong>SERVICIOS</strong>
+
+                        <a href="/servicio-impresion-3d">
+                            Impresión 3D
+                        </a>
+
+                        <a href="/contactus">
+                            Asesoría y consultoría
+                        </a>
+
+                        <a href="/contactus">
+                            Formación
+                        </a>
+
+                    </div>
+
+
+                    <div class="r3d-home-footer-column">
+
+                        <strong>EMPRESA</strong>
+
+                        <a href="/contactus">Sobre nosotros</a>
+                        <a href="/contactus">Contacto</a>
+
+                    </div>
+
+                </footer>
+
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

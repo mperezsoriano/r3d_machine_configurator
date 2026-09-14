@@ -5,6 +5,23 @@ from odoo.http import request
 class R3DMachineConfigurator(http.Controller):
 
     # =====================================================
+    # PÁGINA HOME
+    # =====================================================
+
+    @http.route(
+        "/",
+        type="http",
+        auth="public",
+        website=True,
+    )
+    def homepage(self, **kwargs):
+
+        return request.render(
+            "r3d_machine_configurator.r3d_homepage"
+        )
+
+
+    # =====================================================
     # PÁGINA DEL CONFIGURADOR
     # =====================================================
 
@@ -16,7 +33,9 @@ class R3DMachineConfigurator(http.Controller):
     )
     def configurator(self, **kwargs):
 
-        machines = request.env["r3d.machine"].sudo().search(
+        machines = request.env[
+            "r3d.machine"
+        ].sudo().search(
             [("active", "=", True)],
             order="sequence, name",
         )
@@ -27,6 +46,7 @@ class R3DMachineConfigurator(http.Controller):
                 "machines": machines,
             },
         )
+
 
     # =====================================================
     # SOLICITUD DE OFERTA
@@ -69,6 +89,7 @@ class R3DMachineConfigurator(http.Controller):
                 "message": "Máquina no válida.",
             }
 
+
         # -------------------------------------------------
         # BUSCAR MÁQUINA
         # -------------------------------------------------
@@ -84,6 +105,7 @@ class R3DMachineConfigurator(http.Controller):
                 "message": "Máquina no encontrada.",
             }
 
+
         # -------------------------------------------------
         # PRECIO BASE
         # -------------------------------------------------
@@ -93,6 +115,7 @@ class R3DMachineConfigurator(http.Controller):
         extras = extras or []
 
         extras_text = []
+
 
         # -------------------------------------------------
         # VALIDAR EXTRAS CONTRA ODOO
@@ -146,6 +169,7 @@ class R3DMachineConfigurator(http.Controller):
                 )
             )
 
+
         # -------------------------------------------------
         # EQUIPAMIENTO INCLUIDO
         # -------------------------------------------------
@@ -162,6 +186,7 @@ class R3DMachineConfigurator(http.Controller):
             "- %s" % config.option_id.name
             for config in included_configs
         ]
+
 
         # -------------------------------------------------
         # DESCRIPCIÓN DE LA OPORTUNIDAD
@@ -184,6 +209,7 @@ class R3DMachineConfigurator(http.Controller):
             % machine.base_price,
         ]
 
+
         # Equipamiento incluido
 
         if included_text:
@@ -195,6 +221,7 @@ class R3DMachineConfigurator(http.Controller):
                 + "<br/>".join(included_text)
                 + "</p>"
             )
+
 
         # Extras seleccionados
 
@@ -217,6 +244,7 @@ class R3DMachineConfigurator(http.Controller):
                 "</p>"
             )
 
+
         # Precio total
 
         description_parts.append(
@@ -226,6 +254,7 @@ class R3DMachineConfigurator(http.Controller):
             "</p>"
             % total
         )
+
 
         # Empresa
 
@@ -237,6 +266,7 @@ class R3DMachineConfigurator(http.Controller):
                 "</p>"
                 % company_name
             )
+
 
         # Comentarios
 
@@ -254,6 +284,7 @@ class R3DMachineConfigurator(http.Controller):
             description_parts
         )
 
+
         # -------------------------------------------------
         # NOMBRE DE LA OPORTUNIDAD
         # -------------------------------------------------
@@ -267,14 +298,17 @@ class R3DMachineConfigurator(http.Controller):
             )
         )
 
-       
+
         # =================================================
         # BUSCAR / CREAR EMPRESA Y CONTACTO
         # =================================================
 
-        Partner = request.env["res.partner"].sudo()
+        Partner = request.env[
+            "res.partner"
+        ].sudo()
 
         company_partner = False
+
 
         # -------------------------------------------------
         # EMPRESA
@@ -291,6 +325,7 @@ class R3DMachineConfigurator(http.Controller):
             )
 
             # Si la empresa no existe, crearla
+
             if not company_partner:
 
                 company_partner = Partner.create({
@@ -298,6 +333,7 @@ class R3DMachineConfigurator(http.Controller):
                     "is_company": True,
                     "company_type": "company",
                 })
+
 
         # -------------------------------------------------
         # PERSONA DE CONTACTO
@@ -310,6 +346,7 @@ class R3DMachineConfigurator(http.Controller):
             ],
             limit=1,
         )
+
 
         # -------------------------------------------------
         # SI LA PERSONA NO EXISTE
@@ -326,6 +363,7 @@ class R3DMachineConfigurator(http.Controller):
             }
 
             # Vincular persona a la empresa
+
             if company_partner:
 
                 partner_values["parent_id"] = (
@@ -336,6 +374,7 @@ class R3DMachineConfigurator(http.Controller):
                 partner_values
             )
 
+
         # -------------------------------------------------
         # SI LA PERSONA YA EXISTE
         # -------------------------------------------------
@@ -345,12 +384,14 @@ class R3DMachineConfigurator(http.Controller):
             values_to_update = {}
 
             # Completar teléfono si no lo tenía
+
             if phone and not partner.phone:
 
                 values_to_update["phone"] = phone
 
             # Vincular a empresa si se ha indicado
             # y todavía no tenía empresa
+
             if company_partner and not partner.parent_id:
 
                 values_to_update["parent_id"] = (
@@ -407,6 +448,7 @@ class R3DMachineConfigurator(http.Controller):
             "expected_revenue":
                 total,
         })
+
 
         # =================================================
         # RESPUESTA
